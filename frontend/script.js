@@ -1,5 +1,4 @@
-const API_URL = "http://localhost:5000";
-
+const API_URL = "https://quicknotes-api-0ebf.onrender.com";
 const noteForm = document.getElementById("noteForm");
 const titleInput = document.getElementById("title");
 const contentInput = document.getElementById("content");

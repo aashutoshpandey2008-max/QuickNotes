@@ -1,7 +1,4 @@
 const express = require("express");
-const dns = require("node:dns");
-
-dns.setServers(["1.1.1.1", "8.8.8.8"]);
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
@@ -32,6 +29,8 @@ app.get("/notes", async (req, res) => {
 
     res.status(200).json(notes);
   } catch (error) {
+    console.error("Error fetching notes:", error.message);
+
     res.status(500).json({
       message: "Error fetching notes"
     });
@@ -66,6 +65,8 @@ app.post("/notes", async (req, res) => {
 
     res.status(201).json(savedNote);
   } catch (error) {
+    console.error("Error creating note:", error.message);
+
     res.status(500).json({
       message: "Error creating note"
     });
@@ -98,6 +99,8 @@ app.delete("/notes/:id", async (req, res) => {
       message: "Note deleted successfully"
     });
   } catch (error) {
+    console.error("Error deleting note:", error.message);
+
     res.status(500).json({
       message: "Error deleting note"
     });
@@ -111,7 +114,7 @@ app.delete("/notes/:id", async (req, res) => {
 async function startServer() {
   try {
     if (!process.env.MONGO_URI) {
-      throw new Error("MONGO_URI is missing from .env");
+      throw new Error("MONGO_URI environment variable is missing");
     }
 
     await mongoose.connect(process.env.MONGO_URI);
@@ -119,7 +122,7 @@ async function startServer() {
     console.log("MongoDB connected successfully");
 
     app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`);
+      console.log(`Server running on port ${PORT}`);
     });
   } catch (error) {
     console.error("Startup failed:", error.message);
