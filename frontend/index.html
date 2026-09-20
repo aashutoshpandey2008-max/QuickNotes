@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QuickNotes | Your Digital Notebook</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <span class="logo-icon">✦</span>
+                <span>QuickNotes</span>
+            </div>
+
+            <span class="header-label">Your digital notebook</span>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <span class="eyebrow">YOUR WORKSPACE</span>
+            <h1>Capture your thoughts<span>.</span></h1>
+            <p>
+                A simple, beautiful space for your ideas,
+                reminders, and everything in between.
+            </p>
+        </section>
+
+        <section class="editor">
+            <div class="section-heading">
+                <h2>Create a note</h2>
+                <span>NEW NOTE</span>
+            </div>
+
+            <form id="noteForm">
+
+                <label for="title">TITLE</label>
+
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="Give your note a title..."
+                    maxlength="100"
+                    required
+                >
+
+                <label for="content">YOUR NOTE</label>
+
+                <textarea
+                    id="content"
+                    placeholder="What's on your mind?"
+                    rows="5"
+                    maxlength="5000"
+                    required
+                ></textarea>
+
+                <div class="form-footer">
+                    <span>Write it down. Keep it close.</span>
+
+                    <button type="submit" id="submitBtn">
+                        + Add Note
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+        <section class="notes-section">
+
+            <div class="section-heading notes-heading">
+                <div>
+                    <h2>Your notes</h2>
+                    <p>Everything you've saved, in one place.</p>
+                </div>
+
+                <span class="note-count" id="noteCount">0 notes</span>
+            </div>
+
+            <p id="status" role="status" aria-live="polite"></p>
+
+            <div id="notesContainer" class="notes-grid"></div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>QuickNotes — Built to keep your ideas close.</p>
+    </footer>
+
+</body>
+</html>
